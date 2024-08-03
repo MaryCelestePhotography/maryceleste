@@ -4,9 +4,7 @@ import { images } from "../data/images";
 import { categories } from "../data/categories";
 
 const Gallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState(
-    "Landscape Portfolio"
-  );
+  const [selectedCategory, setSelectedCategory] = useState("Landscape Portfolio");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -14,9 +12,7 @@ const Gallery = () => {
   // Filter images based on selected category and location
   const filteredImages = images.filter((img) => {
     if (selectedCategory === "Galleries by Location") {
-      return (
-        img.category === selectedCategory && img.location === selectedLocation
-      );
+      return img.category === selectedCategory && img.location === selectedLocation;
     }
     return img.category === selectedCategory;
   });
@@ -104,14 +100,17 @@ const Gallery = () => {
               src={filteredImages[selectedImageIndex].src}
               alt={filteredImages[selectedImageIndex].title}
             />
-            <ModalTitle>{filteredImages[selectedImageIndex].title}</ModalTitle>
-            <ModalDate>{filteredImages[selectedImageIndex].date}</ModalDate>
-            <ModalLocation>
-              {filteredImages[selectedImageIndex].location}
-            </ModalLocation>
-            <ModalDescription>
-              {filteredImages[selectedImageIndex].description}
-            </ModalDescription>
+            <ModalDetails>
+              <ModalTitle>{filteredImages[selectedImageIndex].title}</ModalTitle>
+              <ModalCategory>{filteredImages[selectedImageIndex].category}</ModalCategory>
+              <ModalDate>{filteredImages[selectedImageIndex].date}</ModalDate>
+              <ModalLocation>
+                {filteredImages[selectedImageIndex].location}
+              </ModalLocation>
+              <ModalDescription>
+                {filteredImages[selectedImageIndex].description}
+              </ModalDescription>
+            </ModalDetails>
 
             {/* Navigation Buttons */}
             {selectedImageIndex > 0 && (
@@ -129,69 +128,97 @@ const Gallery = () => {
 
 // Styled components for the gallery
 const GalleryContainer = styled.div`
-  padding: 2rem;
+  padding: 1.5rem;
+  margin-top: 0; /* Move the gallery higher on the page */
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-top: 0; /* Adjust margin for smaller screens */
+  }
 `;
 
 const CategoryMenu = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Allows buttons to wrap for smaller screens */
+  margin-bottom: 1rem;
 `;
 
 const CategoryButton = styled.button`
-  background: ${(props) => (props.active ? "#f39c12" : "#333")};
+  background: ${(props) => (props.active ? "#f39c12" : "#555")};
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  margin: 0.5rem;
   font-family: "Playfair Display", serif;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 0.9rem;
+  flex: 1;
+  max-width: 150px; /* Ensure all buttons have the same width */
+  transition: background 0.3s ease;
+  
   &:hover {
     background: #f39c12;
+  }
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem; /* Adjust padding for smaller screens */
+    font-size: 0.8rem; /* Adjust font size for smaller screens */
   }
 `;
 
 const LocationMenu = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Allows buttons to wrap for smaller screens */
+  margin-bottom: 1rem;
 `;
 
 const LocationButton = styled.button`
-  background: ${(props) => (props.active ? "#3498db" : "#333")};
+  background: ${(props) => (props.active ? "#3498db" : "#555")};
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   font-family: "Playfair Display", serif;
-  margin: 0 0.5rem;
+  margin: 0.5rem;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 0.9rem;
+  flex: 1;
+  max-width: 150px; /* Ensure all buttons have the same width */
+  transition: background 0.3s ease;
+
   &:hover {
     background: #3498db;
+  }
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem; /* Adjust padding for smaller screens */
+    font-size: 0.8rem; /* Adjust font size for smaller screens */
   }
 `;
 
 const ImageGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.5rem; /* Reduce spacing between images */
-  overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 80vh; /* Limit height to avoid overflowing page */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+  overflow-y: auto;
+  max-height: 80vh;
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
 `;
 
 const ImageItem = styled.div`
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 10px; /* Add border-radius to round images */
+  border-radius: 10px;
 
   img {
     width: 100%;
-    height: 200px; /* Fix height to create uniform grid */
-    object-fit: cover; /* Scale image to fit container while preserving aspect ratio */
+    height: 200px;
+    object-fit: cover;
     transition: transform 0.3s ease;
-    border-radius: 10px; /* Ensure images follow the parent border-radius */
+    border-radius: 10px;
     &:hover {
       transform: scale(1.1);
     }
@@ -206,7 +233,7 @@ const ImageTitle = styled.div`
   position: absolute;
   bottom: 10px;
   left: 50%;
-  transform: translateX(-50%); /* Center the text horizontally */
+  transform: translateX(-50%);
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 5px;
@@ -214,7 +241,7 @@ const ImageTitle = styled.div`
   border-radius: 5px;
   opacity: 0;
   transition: opacity 0.3s ease;
-  text-align: center; /* Align text to the center */
+  text-align: center;
 `;
 
 // Modal styling
@@ -229,6 +256,7 @@ const Modal = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem;
 `;
 
 const ModalContent = styled.div`
@@ -236,6 +264,15 @@ const ModalContent = styled.div`
   max-width: 90%;
   max-height: 90%;
   overflow: hidden;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -244,7 +281,7 @@ const CloseButton = styled.button`
   right: 10px;
   background: transparent;
   border: none;
-  color: white;
+  color: black;
   font-size: 2rem;
   cursor: pointer;
   z-index: 1001;
@@ -254,38 +291,41 @@ const ModalImage = styled.img`
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 10px;
+`;
+
+const ModalDetails = styled.div`
+  margin-top: 1rem;
+  color: #333;
+  font-family: "Playfair Display", serif;
 `;
 
 const ModalTitle = styled.div`
-  color: white;
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  margin-top: 1rem;
   font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+`;
+
+const ModalCategory = styled.div`
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #777;
 `;
 
 const ModalLocation = styled.div`
-  color: white;
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const ModalDate = styled.div`
-  color: white;
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const ModalDescription = styled.div`
-  color: white;
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
 `;
 
 // Navigation Buttons
