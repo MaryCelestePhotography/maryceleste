@@ -28,14 +28,12 @@ const AboutSection = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem;
-  background: #fff;
   flex-wrap: wrap; /* Enables wrapping for small screens */
-  margin-top: 4rem; /* Adds space below the navbar */
+  margin-top: 2rem; /* Adds space below the navbar */
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack vertically on smaller screens */
     padding: 2rem; /* Reduce padding on smaller screens */
-    margin-top: 3rem; /* Reduce top margin for smaller screens */
   }
 `;
 
@@ -52,7 +50,7 @@ const AboutImage = styled.img`
   }
 
   @media (max-width: 480px) {
-    width: 150px; /* Further adjust image size for extra small screens */
+    width: 200px; /* Further adjust image size for extra small screens */
   }
 `;
 
