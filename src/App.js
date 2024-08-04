@@ -38,7 +38,7 @@ const PageWrapper = ({ component }) => {
 };
 
 const PageContainer = styled.div`
-  padding-top: ${(props) => (props.isSlideshowPage ? "0" : "100px")};
+  padding-top: ${(props) => (props.isSlideshowPage ? "0" : "105px")};
   padding-bottom: ${(props) => (props.isSlideshowPage ? "0" : "50px")};
   min-height: ${(props) =>
     props.isSlideshowPage ? "100vh" : "calc(100vh - 150px)"};
