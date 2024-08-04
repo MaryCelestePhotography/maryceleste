@@ -1,16 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const images = [
-  { src: "images/wildlife/Snorkel Strollin' Africa 16x24.jpg", title: "Snorkel Strollin' Africa" },
-  { src: 'images/landscape/Silent Reflections in Patagonia 24x36.jpg', title: 'Silent Reflections in Patagonia' },
   { src: 'images/landscape/Welcome to the Woods NH 16x24.jpg', title: 'Welcome to the Woods' },
-
+  { src: 'images/landscape/Sweet Evening on the Cape 16x24.jpg', title: 'Sweet Evening on the Cape' },
+  { src: 'images/landscape/Silent Reflections in Patagonia 24x36.jpg', title: 'Silent Reflections in Patagonia' },
 ];
 
-
-const fallbackImage = '/images/slideshow/fallback.jpg';
+const fallbackImage = 'images/landscape/Sweet Evening on the Cape 16x24.jpg';
 
 const Slideshow = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,9 +17,9 @@ const Slideshow = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change images every 3 seconds
+    }, 5000); // Change images every 5 seconds
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   const handleImageError = (event) => {
@@ -31,11 +28,15 @@ const Slideshow = () => {
 
   return (
     <SlideshowContainer>
-      <Image
-        src={images[currentImageIndex].src}
-        alt={images[currentImageIndex].title}
-        onError={handleImageError} 
-      />
+      {images.map((image, index) => (
+        <Image
+          key={index}
+          src={image.src}
+          alt={image.title}
+          isActive={index === currentImageIndex}
+          onError={handleImageError}
+        />
+      ))}
     </SlideshowContainer>
   );
 };
@@ -56,11 +57,12 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover; /* Cover the entire container while maintaining aspect ratio */
-  transition: opacity 1s ease-in-out;
-  opacity: 0.9;
   position: absolute; /* Allow the image to fill the container */
   top: 0;
   left: 0;
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+  transition: opacity 2s ease-in-out;
 `;
 
 export default Slideshow;
+
