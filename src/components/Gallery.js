@@ -4,7 +4,9 @@ import { images } from "../data/images";
 import { categories } from "../data/categories";
 
 const Gallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Landscape Portfolio");
+  const [selectedCategory, setSelectedCategory] = useState(
+    "Landscape Portfolio"
+  );
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -12,7 +14,9 @@ const Gallery = () => {
   // Filter images based on selected category and location
   const filteredImages = images.filter((img) => {
     if (selectedCategory === "Galleries by Location") {
-      return img.category === selectedCategory && img.location === selectedLocation;
+      return (
+        img.category === selectedCategory && img.location === selectedLocation
+      );
     }
     return img.category === selectedCategory;
   });
@@ -39,18 +43,20 @@ const Gallery = () => {
   };
 
   // Navigate to the previous image
-  const previousImage = () => {
-    setSelectedImageIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : prevIndex
-    );
-  };
+  // // const showPreviousImage = (event) => {
+  //   event.stopPropagation(); // Prevent closing the modal when clicking the button
+  //   setSelectedImageIndex((prevIndex) =>
+  //     prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1
+  //   );
+  // };
 
   // Navigate to the next image
-  const nextImage = () => {
-    setSelectedImageIndex((prevIndex) =>
-      prevIndex < filteredImages.length - 1 ? prevIndex + 1 : prevIndex
-    );
-  };
+  // const showNextImage = (event) => {
+  //   event.stopPropagation(); // Prevent closing the modal when clicking the button
+  //   setSelectedImageIndex((prevIndex) =>
+  //     prevIndex === filteredImages.length - 1 ? 0 : prevIndex + 1
+  //   );
+  // };
 
   return (
     <GalleryContainer>
@@ -93,32 +99,27 @@ const Gallery = () => {
       </ImageGrid>
 
       {isModalOpen && selectedImageIndex !== null && (
-        <Modal>
+        <Modal onClick={closeModal}>
           <ModalContent>
             <CloseButton onClick={closeModal}>×</CloseButton>
             <ModalImage
               src={filteredImages[selectedImageIndex].src}
               alt={filteredImages[selectedImageIndex].title}
             />
+            {/* <PrevButton onClick={showPreviousImage}>&#8249;</PrevButton> */}
+            {/* <NextButton onClick={showNextImage}>&#8250;</NextButton> */}
             <ModalDetails>
               <ModalTitle>{filteredImages[selectedImageIndex].title}</ModalTitle>
-              <ModalCategory>{filteredImages[selectedImageIndex].category}</ModalCategory>
-              <ModalDate>{filteredImages[selectedImageIndex].date}</ModalDate>
-              <ModalLocation>
+              <ModalText>
+                {filteredImages[selectedImageIndex].date}
+              </ModalText>
+              <ModalText>
                 {filteredImages[selectedImageIndex].location}
-              </ModalLocation>
-              <ModalDescription>
+              </ModalText>
+              <ModalText>
                 {filteredImages[selectedImageIndex].description}
-              </ModalDescription>
+              </ModalText>
             </ModalDetails>
-
-            {/* Navigation Buttons */}
-            {selectedImageIndex > 0 && (
-              <PrevButton onClick={previousImage}>&larr;</PrevButton>
-            )}
-            {selectedImageIndex < filteredImages.length - 1 && (
-              <NextButton onClick={nextImage}>&rarr;</NextButton>
-            )}
           </ModalContent>
         </Modal>
       )}
@@ -156,7 +157,7 @@ const CategoryButton = styled.button`
   flex: 1;
   max-width: 150px; /* Ensure all buttons have the same width */
   transition: background 0.3s ease;
-  
+
   &:hover {
     background: #f39c12;
   }
@@ -257,22 +258,15 @@ const Modal = styled.div`
   align-items: center;
   z-index: 1000;
   padding: 1rem;
+  overflow-y: auto; /* Allow scrolling if content exceeds viewport */
 `;
 
 const ModalContent = styled.div`
   position: relative;
   max-width: 90%;
-  max-height: 90%;
+  max-height: 90vh; /* Adjusted to allow both image and title */
   overflow: hidden;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 0.5rem;
-  }
 `;
 
 const CloseButton = styled.button`
@@ -281,23 +275,27 @@ const CloseButton = styled.button`
   right: 10px;
   background: transparent;
   border: none;
-  color: black;
+  color: white;
   font-size: 2rem;
   cursor: pointer;
   z-index: 1001;
+  text-shadow: 0 0 5px black;
 `;
 
 const ModalImage = styled.img`
   width: 100%;
-  height: auto;
+  max-height: 80vh; /* Allow some space for the title */
   display: block;
-  border-radius: 10px;
+  border-radius: 0; /* No rounded corners */
+  object-fit: contain; /* Maintain aspect ratio */
 `;
 
 const ModalDetails = styled.div`
   margin-top: 1rem;
-  color: #333;
+  color: white;
   font-family: "Playfair Display", serif;
+  overflow-y: auto;
+  max-height: 50vh; /* Ensure the title fits and is readable */
 `;
 
 const ModalTitle = styled.div`
@@ -306,67 +304,50 @@ const ModalTitle = styled.div`
   font-weight: bold;
 `;
 
-const ModalCategory = styled.div`
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #777;
-`;
-
-const ModalLocation = styled.div`
+const ModalText = styled.div`
   font-size: 1rem;
   margin-bottom: 0.5rem;
-`;
-
-const ModalDate = styled.div`
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-`;
-
-const ModalDescription = styled.div`
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
 `;
 
 // Navigation Buttons
-const PrevButton = styled.button`
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background 0.3s ease;
+// const PrevButton = styled.button`
+//   position: absolute;
+//   top: 50%;
+//   left: 10px;
+//   transform: translateY(-50%);
+//   background: rgba(0, 0, 0, 0.5);
+//   border: none;
+//   color: white;
+//   font-size: 2rem;
+//   cursor: pointer;
+//   z-index: 1001;
+//   padding: 0.5rem;
+//   border-radius: 50%;
+//   transition: background 0.3s ease;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.7);
-  }
-`;
+//   &:hover {
+//     background: rgba(0, 0, 0, 0.7);
+//   }
+// `;
 
-const NextButton = styled.button`
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background 0.3s ease;
+// const NextButton = styled.button`
+//   position: absolute;
+//   top: 50%;
+//   right: 10px;
+//   transform: translateY(-50%);
+//   background: rgba(0, 0, 0, 0.5);
+//   border: none;
+//   color: white;
+//   font-size: 2rem;
+//   cursor: pointer;
+//   z-index: 1001;
+//   padding: 0.5rem;
+//   border-radius: 50%;
+//   transition: background 0.3s ease;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.7);
-  }
-`;
+//   &:hover {
+//     background: rgba(0, 0, 0, 0.7);
+//   }
+// `;
 
 export default Gallery;
