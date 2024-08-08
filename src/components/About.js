@@ -8,15 +8,10 @@ const About = () => {
       <AboutText>
         <h1>About Mary Celeste</h1>
         <p>
-          Mary Celeste is a professional photographer specializing in adventure,
-          lifestyle, and landscape photography. Her work has been featured in
-          numerous publications and exhibitions worldwide.
+        After retiring from her career as an educator, Mary has embarked on extensive world travel to epic locations to capture magnificent beauty. Mary has won awards for her art and been included in a private gallery presentation in downtown Chicago. Her images have been published by different groups in various online documents.
         </p>
         <p>
-          Mary's passion for photography is matched only by her love for the
-          great outdoors. Whether climbing mountains, traversing deserts, or
-          exploring urban landscapes, she captures the beauty of the world with
-          a unique perspective.
+        Mary enjoys her children, grandchildren, hiking, the outdoors, and Rosemaling. As a Christian, she endeavors to create a composition which reflects God’s glorious design.  Then take it home in her pocket to share the spectacular landscapes and impressive wildlife.
         </p>
       </AboutText>
     </AboutSection>
