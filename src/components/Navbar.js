@@ -18,7 +18,7 @@ const Navbar = () => {
           <StyledLink to="/about">About</StyledLink>
         </MenuItem>
         <MenuItem>
-          <StyledLink to="/ordering">Ordering</StyledLink> {/* New Ordering Link */}
+          <StyledLink to="/ordering">Prints</StyledLink> {/* New Ordering Link */}
         </MenuItem>
         <MenuItem>
           <StyledLink to="/contact">Contact</StyledLink>
