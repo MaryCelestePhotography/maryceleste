@@ -58,10 +58,6 @@ const Contact = () => {
           <ContactLabel>Email:</ContactLabel>
           <ContactDetail>mary@marycelestephotography.com</ContactDetail>
         </ContactItem>
-        <ContactItem>
-          <ContactLabel>Phone:</ContactLabel>
-          <ContactDetail>(123) 456-7890</ContactDetail>
-        </ContactItem>
       </ContactInfo>
       <FormContainer>
         <form onSubmit={handleSubmit}>
