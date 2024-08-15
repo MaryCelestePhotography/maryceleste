@@ -11,12 +11,18 @@ const fallbackImage = 'images/landscape/Sweet Evening on the Cape 16x24.jpg';
 
 const Slideshow = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [offsets, setOffsets] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
+
+      // Randomize the offset within a safe range to avoid showing white space
+      const randomX = Math.random() * 10 - 5; // Range from -5% to 5%
+      const randomY = Math.random() * 10 - 5; // Range from -5% to 5%
+      setOffsets({ x: randomX, y: randomY });
     }, 5000); // Change images every 5 seconds
 
     return () => clearInterval(interval);
@@ -35,6 +41,9 @@ const Slideshow = () => {
           alt={image.title}
           isActive={index === currentImageIndex}
           onError={handleImageError}
+          style={{
+            transform: `translate(${offsets.x}%, ${offsets.y}%) scale(1.1)`, // Slight zoom with safe parallax
+          }}
         />
       ))}
     </SlideshowContainer>
@@ -61,8 +70,7 @@ const Image = styled.img`
   top: 0;
   left: 0;
   opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  transition: opacity 2s ease-in-out;
+  transition: opacity 2s ease-in-out, transform 8s ease-in-out;
 `;
 
 export default Slideshow;
-
