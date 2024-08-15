@@ -1,14 +1,12 @@
-// src/components/Ordering.js
-
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom';
 
 const Ordering = () => {
-  const navigate = useNavigate();  // Initialize the navigate function
+  const navigate = useNavigate();
 
   const handleContactButtonClick = () => {
-    navigate('/contact');  // Navigate to the Contact page when the button is clicked
+    navigate('/contact');
   };
 
   return (
@@ -33,6 +31,24 @@ const Ordering = () => {
         <p>
           Please <ContactButton onClick={handleContactButtonClick}>contact me</ContactButton>, and we will consider which options best suit your needs.
         </p>
+        <ImageGallery>
+          <ImageContainer>
+            <ImageTitle>Matte Print</ImageTitle>
+            <img src="/images/prints/1.jpg" alt="Matte Print" />
+          </ImageContainer>
+          <ImageContainer>
+            <ImageTitle>Metal Print</ImageTitle>
+            <img src="/images/prints/2.jpg" alt="Metal Print" />
+          </ImageContainer>
+          <ImageContainer>
+            <ImageTitle>Acrylic Print</ImageTitle>
+            <img src="/images/prints/3.jpg" alt="Acrylic Print" />
+          </ImageContainer>
+          <ImageContainer>
+            <ImageTitle>Gallery-Quality Print</ImageTitle>
+            <img src="/images/prints/4.jpg" alt="Gallery-Quality Print" />
+          </ImageContainer>
+        </ImageGallery>
       </Content>
     </OrderContainer>
   );
@@ -66,7 +82,7 @@ const Content = styled.div`
   font-size: 1rem;
   line-height: 1.6;
   color: #444;
-  text-align: center; /* Center-align the text */
+  text-align: center;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -91,6 +107,47 @@ const ContactButton = styled.button`
   &:hover {
     background-color: #e67e22;
   }
+`;
+
+const ImageGallery = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+  }
+`;
+
+const ImageTitle = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
 `;
 
 export default Ordering;
