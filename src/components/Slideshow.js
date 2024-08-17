@@ -70,7 +70,7 @@ const Image = styled.img`
   top: 0;
   left: 0;
   opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  transition: opacity 2s ease-in-out, transform 8s ease-in-out;
+  transition: opacity 2s ease-in-out, transform 6s ease-in-out;
 `;
 
 export default Slideshow;
