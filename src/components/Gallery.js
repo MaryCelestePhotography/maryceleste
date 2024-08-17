@@ -11,7 +11,6 @@ const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  // Filter images based on selected category or location
   const filteredImages = images.filter((img) => {
     if (selectedCategory === "Galleries by Location" && selectedLocation) {
       return img.location === selectedLocation;
@@ -19,35 +18,30 @@ const Gallery = () => {
     return img.category === selectedCategory;
   });
 
-  // Extract unique locations for "Galleries by Location" category
   const locations = Array.from(
     new Set(images.map((img) => img.location))
   );
 
-  // Open modal and set selected image index
   const openModal = (index) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
   };
 
-  // Close modal and reset selected image index
   const closeModal = () => {
     setSelectedImageIndex(null);
     setIsModalOpen(false);
   };
 
-  // Navigate to the previous image
   const showPreviousImage = (event) => {
-    event.stopPropagation(); // Prevent closing the modal when clicking the button
+    event.stopPropagation();
     setSelectedImageIndex((prevIndex) => {
       const newIndex = prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1;
       return newIndex;
     });
   };
 
-  // Navigate to the next image
   const showNextImage = (event) => {
-    event.stopPropagation(); // Prevent closing the modal when clicking the button
+    event.stopPropagation(); 
     setSelectedImageIndex((prevIndex) => {
       const newIndex = prevIndex === filteredImages.length - 1 ? 0 : prevIndex + 1;
       return newIndex;
@@ -123,7 +117,6 @@ const Gallery = () => {
   );
 };
 
-// Styled components for the gallery
 const GalleryContainer = styled.div`
   padding: 1.5rem;
   margin-top: 0;
@@ -241,7 +234,6 @@ const ImageTitle = styled.div`
   text-align: center;
 `;
 
-// Modal styling
 const Modal = styled.div`
   position: fixed;
   top: 0;
@@ -308,7 +300,6 @@ const ModalText = styled.div`
   margin-top: 0.5rem;
 `;
 
-// Previous and Next buttons styling
 const PrevButton = styled.button`
   position: absolute;
   left: 10px;
