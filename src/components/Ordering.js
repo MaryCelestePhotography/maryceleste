@@ -33,20 +33,24 @@ const Ordering = () => {
         </p>
         <ImageGallery>
           <ImageContainer>
-            <ImageTitle>Matte Print</ImageTitle>
-            <img src="/images/prints/1.jpg" alt="Matte Print" />
+            <ImageTitle>Acrylic Facemount</ImageTitle>
+            <img src="/images/prints/1.jpg" alt="Acrylic Facemount" />
           </ImageContainer>
           <ImageContainer>
             <ImageTitle>Metal Print</ImageTitle>
             <img src="/images/prints/2.jpg" alt="Metal Print" />
           </ImageContainer>
           <ImageContainer>
-            <ImageTitle>Acrylic Print</ImageTitle>
-            <img src="/images/prints/3.jpg" alt="Acrylic Print" />
+            <ImageTitle>Metal Print</ImageTitle>
+            <img src="/images/prints/3.jpg" alt="Metal Print" />
           </ImageContainer>
           <ImageContainer>
-            <ImageTitle>Gallery-Quality Print</ImageTitle>
-            <img src="/images/prints/4.jpg" alt="Gallery-Quality Print" />
+            <ImageTitle>Matte Print</ImageTitle>
+            <img src="/images/prints/4.jpg" alt="Matte Print" />
+          </ImageContainer>
+          <ImageContainer>
+            <ImageTitle>Float mount creates a clean contemporary look on your wall!</ImageTitle>
+            <img src="/images/prints/Float.jpg" alt="Float Mount" />
           </ImageContainer>
         </ImageGallery>
       </Content>
