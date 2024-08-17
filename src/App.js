@@ -7,7 +7,7 @@ import Slideshow from "./components/Slideshow";
 import Gallery from "./components/Gallery";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Ordering from "./components/Ordering";  // Import the new component
+import Ordering from "./components/Ordering";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/" element={<PageWrapper component={<Slideshow />} />} />
         <Route path="/gallery" element={<PageWrapper component={<Gallery />} />} />
         <Route path="/about" element={<PageWrapper component={<About />} />} />
-        <Route path="/ordering" element={<PageWrapper component={<Ordering />} />} /> {/* Add Ordering route */}
+        <Route path="/ordering" element={<PageWrapper component={<Ordering />} />} />
         <Route path="/contact" element={<PageWrapper component={<Contact />} />} />
       </Routes>
       <Footer />
@@ -56,4 +56,3 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default App;
-
