@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { images } from "../data/images";
 import { categories } from "../data/categories";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState(
@@ -18,9 +20,7 @@ const Gallery = () => {
     return img.category === selectedCategory;
   });
 
-  const locations = Array.from(
-    new Set(images.map((img) => img.location))
-  );
+  const locations = Array.from(new Set(images.map((img) => img.location)));
 
   const openModal = (index) => {
     setSelectedImageIndex(index);
@@ -41,7 +41,7 @@ const Gallery = () => {
   };
 
   const showNextImage = (event) => {
-    event.stopPropagation(); 
+    event.stopPropagation();
     setSelectedImageIndex((prevIndex) => {
       const newIndex = prevIndex === filteredImages.length - 1 ? 0 : prevIndex + 1;
       return newIndex;
@@ -83,6 +83,9 @@ const Gallery = () => {
         {filteredImages.map((img, index) => (
           <ImageItem key={index} onClick={() => openModal(index)}>
             <img src={img.src} alt={img.title} />
+            <IconOverlay className="icon">
+              <FontAwesomeIcon icon={faSearchPlus} />
+            </IconOverlay>
             <ImageTitle>{img.title}</ImageTitle>
           </ImageItem>
         ))}
@@ -116,6 +119,22 @@ const Gallery = () => {
     </GalleryContainer>
   );
 };
+
+const ImageTitle = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  font-family: "Playfair Display", serif;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  z-index: 1;
+`;
 
 const GalleryContainer = styled.div`
   padding: 1.5rem;
@@ -197,6 +216,22 @@ const ImageGrid = styled.div`
   }
 `;
 
+const IconOverlay = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  color: white;
+  z-index: 2;
+  text-shadow: 0 0 3px black;
+
+  @media (max-width: 768px) {
+    opacity: 1;
+  }
+`;
+
 const ImageItem = styled.div`
   position: relative;
   cursor: pointer;
@@ -209,29 +244,19 @@ const ImageItem = styled.div`
     object-fit: cover;
     transition: transform 0.3s ease;
     border-radius: 10px;
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 
-  &:hover div {
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  &:hover .icon {
+    transform: scale(2.1);
+  }
+
+  &:hover ${ImageTitle} {
     opacity: 1;
   }
-`;
-
-const ImageTitle = styled.div`
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 5px;
-  font-family: "Playfair Display", serif;
-  border-radius: 5px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  text-align: center;
 `;
 
 const Modal = styled.div`
@@ -257,85 +282,72 @@ const ModalContent = styled.div`
   text-align: center;
 `;
 
+const ModalImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+`;
+
 const CloseButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-  background: transparent;
-  border: none;
+  background-color: rgba(0, 0, 0, 0.0);
   color: white;
-  font-size: 2rem;
+  border: none;
+  padding: 0.5rem;
   cursor: pointer;
-  z-index: 1001;
-  text-shadow: 0 0 5px black;
-  &:hover {
-    background: rgba(0, 0, 0, 0.0);
-    color: orange;
-  }
+  font-size: 1.5rem;
+  border-radius: 5px;
+  z-index: 10;
 `;
 
-const ModalImage = styled.img`
-  width: 100%;
-  max-height: 80vh;
-  display: block;
-  border-radius: 0;
-  object-fit: contain;
+const PrevButton = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.0);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 5px;
+  z-index: 10;
+`;
+
+const NextButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.0);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 5px;
+  z-index: 10;
 `;
 
 const ModalDetails = styled.div`
   margin-top: 1rem;
   color: white;
-  font-family: "Playfair Display", serif;
+  text-align: left;
   overflow-y: auto;
-  max-height: 50vh;
+  max-height: 40vh;
 `;
 
-const ModalTitle = styled.div`
+const ModalTitle = styled.h2`
   font-size: 1.5rem;
-  font-weight: bold;
+  margin-bottom: 0.5rem;
 `;
 
-const ModalText = styled.div`
+const ModalText = styled.p`
   font-size: 1rem;
-  margin-top: 0.5rem;
-`;
-
-const PrevButton = styled.button`
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.0);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  text-shadow: 0 0 5px black;
-  border-radius: 5px;
-  &:hover {
-    background: rgba(0, 0, 0, 0.0);
-    color: orange;
-  }
-`;
-
-const NextButton = styled.button`
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.0);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  text-shadow: 0 0 5px black;
-  border-radius: 5px;
-  &:hover {
-    background: rgba(0, 0, 0, 0.0);
-    color: orange;
-  }
+  margin: 0.25rem 0;
 `;
 
 export default Gallery;
