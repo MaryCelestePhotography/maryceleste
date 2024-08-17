@@ -7,7 +7,7 @@ export const images = [
     src: '/images/landscape/African Boabab tree pirouettes under the Milky Way 16x24.jpg',
     title: 'African Boabab tree pirouettes under the Milky Way',
     date: '05/20/2023', // Optional: Leave empty if not available
-    location: 'Africa', // Optional: Leave empty if not available
+    location: 'Africa',
     description: 'Beautiful place', // Optional: Leave empty if not available
     category: 'Landscape Portfolio',
   },
@@ -15,7 +15,7 @@ export const images = [
     src: '/images/landscape/Deep Sighs at Drangarnir Sea Arch Faroe Islands 20x30.jpg',
     title: 'Deep Sighs at Drangarnir Sea Arch Faroe Islands',
     date: '', // Optional
-    location: 'Faroe Islands', // Optional
+    location: 'Faroe Islands',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -23,7 +23,7 @@ export const images = [
     src: '/images/landscape/New Zealand Roadside Reflection 24x36.jpg',
     title: 'New Zealand Roadside Reflection',
     date: '', // Optional
-    location: '', // Optional
+    location: 'New Zealand',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -31,7 +31,7 @@ export const images = [
     src: '/images/landscape/Silent Reflections in Patagonia 24x36.jpg',
     title: 'Silent Reflections in Patagonia',
     date: '', // Optional
-    location: '', // Optional
+    location: 'Patagonia',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -39,7 +39,7 @@ export const images = [
     src: '/images/landscape/Sweet Evening on the Cape 16x24.jpg',
     title: 'Sweet Evening on the Cape',
     date: '', // Optional
-    location: '', // Optional
+    location: 'Cape',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -47,7 +47,7 @@ export const images = [
     src: '/images/landscape/Welcome to the Woods NH 16x24.jpg',
     title: 'Welcome to the Woods NH',
     date: '', // Optional
-    location: '', // Optional
+    location: 'New Hampshire',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -55,7 +55,7 @@ export const images = [
     src: '/images/landscape/Windy Day Lofoten Islands 16x24.jpg',
     title: 'Windy Day Lofoten Islands',
     date: '', // Optional
-    location: '', // Optional
+    location: 'Lofoten Islands',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -65,7 +65,7 @@ export const images = [
     src: '/images/abstract/aDSC_257 262focus merge.jpg',
     title: '', // Optional
     date: '', // Optional
-    location: '', // Optional
+    location: 'Miscellaneous',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
@@ -73,7 +73,7 @@ export const images = [
     src: '/images/abstract/aDSC_3808.jpg',
     title: '', // Optional
     date: '', // Optional
-    location: '', // Optional
+    location: 'Miscellaneous',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
@@ -144,21 +144,4 @@ export const images = [
     category: 'Wildlife Portfolio',
   },
   
-  // // Galleries by Location
-  // {
-  //   src: '/images/locations/usa/photo4.jpg',
-  //   title: 'New York City Skyline',
-  //   date: '', // Optional
-  //   location: 'USA',
-  //   description: '', // Optional
-  //   category: 'Galleries by Location',
-  // },
-  // {
-  //   src: '/images/locations/faroe/photo1.jpg',
-  //   title: 'Deep Sighs at Drangarnir Sea Arch',
-  //   date: '', // Optional
-  //   location: 'Faroe Islands',
-  //   description: '', // Optional
-  //   category: 'Galleries by Location',
-  // },
 ];
