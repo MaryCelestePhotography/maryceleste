@@ -39,7 +39,7 @@ Contact 📬
 For inquiries or to purchase prints, please use the [contact form](https://www.marycelestephotography.com/contact) on the website.
 
 Credits 🙌
-This project was developed by [Cody DiBella](https://github.com/codydibella) - [Codencodes](codencodes.com). The website is designed to provide a professional showcase for Mary's work.
+This project was developed by [Cody DiBella](https://github.com/codydibella) - [Codencodes](https://codencodes.com). The website is designed to provide a professional showcase for Mary's work.
 
 License 🔑
 This project is for professional use by Mary Celeste and is not intended for public sharing or forking.
