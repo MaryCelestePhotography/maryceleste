@@ -11,23 +11,17 @@ const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  // Filter images based on selected category and location
+  // Filter images based on selected category or location
   const filteredImages = images.filter((img) => {
-    if (selectedCategory === "Galleries by Location") {
-      return (
-        img.category === selectedCategory && img.location === selectedLocation
-      );
+    if (selectedCategory === "Galleries by Location" && selectedLocation) {
+      return img.location === selectedLocation;
     }
     return img.category === selectedCategory;
   });
 
   // Extract unique locations for "Galleries by Location" category
   const locations = Array.from(
-    new Set(
-      images
-        .filter((img) => img.category === "Galleries by Location")
-        .map((img) => img.location)
-    )
+    new Set(images.map((img) => img.location))
   );
 
   // Open modal and set selected image index
@@ -47,7 +41,6 @@ const Gallery = () => {
     event.stopPropagation(); // Prevent closing the modal when clicking the button
     setSelectedImageIndex((prevIndex) => {
       const newIndex = prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1;
-      console.log("Previous Image Index:", newIndex); // Debug statement
       return newIndex;
     });
   };
@@ -57,7 +50,6 @@ const Gallery = () => {
     event.stopPropagation(); // Prevent closing the modal when clicking the button
     setSelectedImageIndex((prevIndex) => {
       const newIndex = prevIndex === filteredImages.length - 1 ? 0 : prevIndex + 1;
-      console.log("Next Image Index:", newIndex); // Debug statement
       return newIndex;
     });
   };
@@ -284,7 +276,7 @@ const CloseButton = styled.button`
   cursor: pointer;
   z-index: 1001;
   text-shadow: 0 0 5px black;
-    &:hover {
+  &:hover {
     background: rgba(0, 0, 0, 0.0);
     color: orange;
   }
@@ -308,31 +300,28 @@ const ModalDetails = styled.div`
 
 const ModalTitle = styled.div`
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
   font-weight: bold;
 `;
 
 const ModalText = styled.div`
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
-// Navigation Buttons
+// Previous and Next buttons styling
 const PrevButton = styled.button`
   position: absolute;
-  top: 50%;
   left: 10px;
+  top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.0);
-  border: none;
   color: white;
+  border: none;
+  padding: 0.5rem 1rem;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 1001;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-
+  text-shadow: 0 0 5px black;
+  border-radius: 5px;
   &:hover {
     background: rgba(0, 0, 0, 0.0);
     color: orange;
@@ -341,22 +330,20 @@ const PrevButton = styled.button`
 
 const NextButton = styled.button`
   position: absolute;
-  top: 50%;
   right: 10px;
+  top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.0);
-  border: none;
   color: white;
+  border: none;
+  padding: 0.5rem 1rem;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 1001;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-
+  text-shadow: 0 0 5px black;
+  border-radius: 5px;
   &:hover {
     background: rgba(0, 0, 0, 0.0);
-        color: orange;
+    color: orange;
   }
 `;
 
