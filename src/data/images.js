@@ -1,6 +1,3 @@
-// src/data/images.js
-
-// Array of image data for the photography portfolio
 export const images = [
   // Landscape Portfolio
   {
@@ -8,7 +5,7 @@ export const images = [
     title: 'African Boabab tree pirouettes under the Milky Way',
     date: '05/20/2023', // Optional: Leave empty if not available
     location: 'Africa',
-    description: 'Beautiful place', // Optional: Leave empty if not available
+    description: '', // Optional: Leave empty if not available
     category: 'Landscape Portfolio',
   },
   {
@@ -60,10 +57,16 @@ export const images = [
     category: 'Landscape Portfolio',
   },
 
+
+
+
+
+
+  
   // Abstract and Bible Verses
   {
     src: '/images/abstract/aDSC_257 262focus merge.jpg',
-    title: '', // Optional
+    title: '',
     date: '', // Optional
     location: 'Miscellaneous',
     description: '', // Optional
@@ -71,19 +74,26 @@ export const images = [
   },
   {
     src: '/images/abstract/aDSC_3808.jpg',
-    title: '', // Optional
+    title: '',
     date: '', // Optional
     location: 'Miscellaneous',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
 
+
+
+
+
+
+
+
   // Wildlife Portfolio
   {
     src: '/images/wildlife/a Grumpy Buffalo 10x10.jpg',
     title: 'A Grumpy Buffalo',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -91,7 +101,7 @@ export const images = [
     src: '/images/wildlife/Antelope Pose 8x10.jpg',
     title: 'Antelope Pose',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -99,7 +109,7 @@ export const images = [
     src: '/images/wildlife/Big Guy 10x10.jpg',
     title: 'Big Guy',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -107,7 +117,7 @@ export const images = [
     src: '/images/wildlife/Diva 14x21.jpg',
     title: 'Diva',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -115,7 +125,7 @@ export const images = [
     src: '/images/wildlife/Handsome Man 10x10.jpg',
     title: 'Handsome Man',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -123,7 +133,7 @@ export const images = [
     src: '/images/wildlife/Potato Digger 10x10.jpg',
     title: 'Potato Digger',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -131,7 +141,7 @@ export const images = [
     src: "/images/wildlife/Snorkel Strollin' Africa 16x24.jpg",
     title: "Snorkel Strollin' Africa",
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
@@ -139,9 +149,18 @@ export const images = [
     src: '/images/wildlife/the Real Pumbaa 8x10.jpg',
     title: 'The Real Pumbaa',
     date: '', // Optional
-    location: 'Africa', // Optional
+    location: 'Africa',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
   
+
+
+
+
+
+
+
+
+
 ];
