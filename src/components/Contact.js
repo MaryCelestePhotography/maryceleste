@@ -27,7 +27,7 @@ const Contact = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' }); // Clear the error on change
+    setErrors({ ...errors, [name]: '' });
   };
 
   const handleSubmit = (e) => {
@@ -43,7 +43,7 @@ const Contact = () => {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
         setErrors({});
-        setTimeout(() => setSubmitStatus(null), 5000); // Clear success message after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000);
       }, (error) => {
         setSubmitStatus('error');
       });
