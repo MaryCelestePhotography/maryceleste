@@ -1,5 +1,3 @@
-// src/components/Navbar.js
-
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -18,7 +16,7 @@ const Navbar = () => {
           <StyledLink to="/about">About</StyledLink>
         </MenuItem>
         <MenuItem>
-          <StyledLink to="/ordering">Prints</StyledLink> {/* New Ordering Link */}
+          <StyledLink to="/ordering">Prints</StyledLink>
         </MenuItem>
         <MenuItem>
           <StyledLink to="/contact">Contact</StyledLink>
@@ -53,13 +51,13 @@ const Logo = styled(Link)`
   margin-bottom: 0.25rem;
 
   img {
-    height: 3rem; // Set a fixed height for the logo image
-    width: auto; // Maintain aspect ratio
+    height: 3rem;
+    width: auto;
   }
 
   @media (max-width: 768px) {
     img {
-      height: 2.5rem; // Smaller height on mobile
+      height: 2.5rem;
     }
   }
 `;
