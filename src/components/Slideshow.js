@@ -19,11 +19,10 @@ const Slideshow = () => {
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
 
-      // Randomize the offset within a safe range to avoid showing white space
-      const randomX = Math.random() * 10 - 5; // Range from -5% to 5%
-      const randomY = Math.random() * 10 - 5; // Range from -5% to 5%
+      const randomX = Math.random() * 10 - 5;
+      const randomY = Math.random() * 10 - 5;
       setOffsets({ x: randomX, y: randomY });
-    }, 5000); // Change images every 5 seconds
+    }, 5000); // Time for image change
 
     return () => clearInterval(interval);
   }, []);
@@ -42,7 +41,7 @@ const Slideshow = () => {
           isActive={index === currentImageIndex}
           onError={handleImageError}
           style={{
-            transform: `translate(${offsets.x}%, ${offsets.y}%) scale(1.1)`, // Slight zoom with safe parallax
+            transform: `translate(${offsets.x}%, ${offsets.y}%) scale(1.1)`,
           }}
         />
       ))}
@@ -54,19 +53,19 @@ const SlideshowContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full height for landing page */
-  width: 100vw; /* Full width for landing page */
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
-  position: relative; /* Ensure it can be positioned correctly */
-  top: 0; /* Start from the top of the page */
+  position: relative;
+  top: 0;
   left: 0;
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cover the entire container while maintaining aspect ratio */
-  position: absolute; /* Allow the image to fill the container */
+  object-fit: cover;
+  position: absolute;
   top: 0;
   left: 0;
   opacity: ${({ isActive }) => (isActive ? 1 : 0)};
