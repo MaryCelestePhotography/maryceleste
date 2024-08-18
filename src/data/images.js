@@ -3,7 +3,7 @@ export const images = [
   {
     src: '/images/landscape/African Boabab tree pirouettes under the Milky Way 16x24.jpg',
     title: 'African Boabab tree pirouettes under the Milky Way',
-    date: '05/20/2023', // Optional: Leave empty if not available
+    date: '', // Optional: Leave empty if not available
     location: 'Africa',
     description: '', // Optional: Leave empty if not available
     category: 'Landscape Portfolio',
@@ -150,6 +150,14 @@ export const images = [
     title: 'The Real Pumbaa',
     date: '', // Optional
     location: 'Africa',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
+    {
+    src: '/images/wildlife/Petaka Puma Patagonia resized.jpg',
+    title: 'Pretty Puma Princess',
+    date: '', // Optional
+    location: 'Patagonia',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
