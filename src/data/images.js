@@ -36,7 +36,7 @@ export const images = [
     src: '/images/landscape/Sweet Evening on the Cape 16x24.jpg',
     title: 'Sweet Evening on the Cape',
     date: '', // Optional
-    location: 'Cape',
+    location: 'Cape Cod',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
