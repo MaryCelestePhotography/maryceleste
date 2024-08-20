@@ -36,7 +36,7 @@ export const images = [
     src: '/images/landscape/Sweet Evening on the Cape 16x24.jpg',
     title: 'Sweet Evening on the Cape',
     date: '', // Optional
-    location: 'Cape Cod',
+    location: 'New England USA',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -44,7 +44,7 @@ export const images = [
     src: '/images/landscape/Welcome to the Woods NH 16x24.jpg',
     title: 'Welcome to the Woods NH',
     date: '', // Optional
-    location: 'New Hampshire',
+    location: 'New England USA',
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
@@ -84,7 +84,7 @@ export const images = [
     src: '/images/abstract/aDSC_257 262focus merge.jpg',
     title: '',
     date: '', // Optional
-    location: 'Southwest, USA',
+    location: 'Southwest USA',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
