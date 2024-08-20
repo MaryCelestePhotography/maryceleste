@@ -83,20 +83,27 @@ export const images = [
   {
     src: '/images/abstract/aDSC_257 262focus merge.jpg',
     title: '',
-    date: '', // Optional
+    date: 'Light Beam Antelope Canyon', // Optional
     location: 'Southwest USA',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
   {
     src: '/images/abstract/aDSC_3808.jpg',
-    title: '',
+    title: 'Glacier Shine',
     date: '', // Optional
     location: 'Patagonia',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
-
+{
+    src: '/images/abstract/Colorful Growth8.jpg',
+    title: 'Colorful Growth',
+    date: '', // Optional
+    location: 'New Zealand',
+    description: '', // Optional
+    category: 'Abstract and Bible Verses',
+  },
 
 
 
