@@ -64,7 +64,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
-
+{
+    src: '/images/landscape/Classic Lofoten.jpg',
+    title: 'Classic Lofoten',
+    date: '', // Optional
+    location: 'Lofoten Islands',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
 
 
 
