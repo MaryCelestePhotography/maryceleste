@@ -88,7 +88,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
-
+{
+    src: '/images/landscape/Grand Canyon Sunset.jpg',
+    title: 'Grand Canyon Sunset',
+    date: '', // Optional
+    location: 'Southwest USA',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
 
 
 
