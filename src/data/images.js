@@ -155,7 +155,13 @@ export const images = [
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
-
+{
+    src: '/images/abstract/Menorca sunset widow comfort.jpg',
+    title: 'Grand Canyon Noble ThoughtsMenorca sunset widow comfort, // Optional
+    location: 'Menorca',
+    description: '', // Optional
+    category: 'Abstract and Bible Verses',
+  },
 
 
 
