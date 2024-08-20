@@ -72,7 +72,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
-
+{
+    src: '/images/landscape/Frozen Toes in The Narrows.jpg',
+    title: 'Frozen Toes in The Narrows',
+    date: '', // Optional
+    location: 'Southwest USA',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
 
 
 
