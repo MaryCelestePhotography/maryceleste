@@ -280,12 +280,16 @@ const ModalContent = styled.div`
   max-height: 90vh;
   overflow: hidden;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `;
 
 const ModalImage = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 0px;
 `;
 
 const CloseButton = styled.button`
@@ -337,7 +341,9 @@ const ModalDetails = styled.div`
   color: white;
   text-align: left;
   overflow-y: auto;
-  max-height: 40vh;
+  max-height: 20vh;
+  padding: 0 1rem;
+  flex-shrink: 0;
 `;
 
 const ModalTitle = styled.h2`
