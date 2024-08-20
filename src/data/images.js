@@ -97,14 +97,21 @@ export const images = [
     category: 'Abstract and Bible Verses',
   },
 {
-    src: '/images/abstract/Colorful Growth8.jpg',
+    src: '/images/abstract/Colorful Growth.jpg',
     title: 'Colorful Growth',
     date: '', // Optional
     location: 'New Zealand',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
-
+{
+    src: '/images/abstract/Falling water.jpg',
+    title: 'Falling water',
+    date: '', // Optional
+    location: 'New England USA',
+    description: '', // Optional
+    category: 'Abstract and Bible Verses',
+  },
 
 
 
