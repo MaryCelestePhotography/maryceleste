@@ -80,7 +80,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
-
+{
+    src: '/images/landscape/Golden Trees.jpg',
+    title: 'Golden Trees',
+    date: '', // Optional
+    location: 'Southwest USA',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
 
 
 
