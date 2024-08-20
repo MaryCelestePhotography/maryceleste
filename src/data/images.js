@@ -249,7 +249,14 @@ export const images = [
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
-  
+  {
+    src: '/images/wildlife/Looking for Trouble.jpg',
+    title: 'Looking for Trouble',
+    date: '', // Optional
+    location: 'Africa',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
 
 
 
