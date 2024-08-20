@@ -170,6 +170,14 @@ export const images = [
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
+  {
+    src: '/images/wildlife/Always Aware.jpg',
+    title: 'Always Aware',
+    date: '', // Optional
+    location: 'Africa',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
   
 
 
