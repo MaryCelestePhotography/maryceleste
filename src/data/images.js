@@ -104,7 +104,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
-
+{
+    src: '/images/landscape/In the Clouds.jpg',
+    title: 'In the Clouds',
+    date: '', // Optional
+    location: 'New Zealand',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
 
   
   // Abstract and Bible Verses
