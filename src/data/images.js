@@ -84,7 +84,7 @@ export const images = [
     src: '/images/abstract/aDSC_257 262focus merge.jpg',
     title: '',
     date: '', // Optional
-    location: 'Miscellaneous',
+    location: 'Southwest, USA',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
@@ -92,7 +92,7 @@ export const images = [
     src: '/images/abstract/aDSC_3808.jpg',
     title: '',
     date: '', // Optional
-    location: 'Miscellaneous',
+    location: 'Patagonia',
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
