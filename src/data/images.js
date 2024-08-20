@@ -162,7 +162,14 @@ export const images = [
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
-
+{
+    src: '/images/abstract/Monestary Steps.jpg',
+    title: 'Monestary Steps',
+    date: '', // Optional
+    location: 'Greece',
+    description: '', // Optional
+    category: 'Abstract and Bible Verses',
+  },
 
 
 
