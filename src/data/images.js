@@ -126,7 +126,14 @@ export const images = [
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
-
+{
+    src: '/images/abstract/Grand Canyon Noble Thoughts.jpg',
+    title: 'Grand Canyon Noble Thoughts',
+    date: '', // Optional
+    location: 'Southwest USA',
+    description: '', // Optional
+    category: 'Abstract and Bible Verses',
+  },
 
 
 
