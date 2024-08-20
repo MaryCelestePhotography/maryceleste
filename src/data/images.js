@@ -270,6 +270,14 @@ export const images = [
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
+{
+    src: '/images/wildlife/MY Babies.jpg',
+    title: 'MY Babies',
+    date: '', // Optional
+    location: 'Africa',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
 
 
 
