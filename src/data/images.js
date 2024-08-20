@@ -178,6 +178,14 @@ export const images = [
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
+  {
+    src: '/images/wildlife/Caracara Hello.jpg',
+    title: 'Caracara Hello',
+    date: '', // Optional
+    location: 'Patagonia',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
   
 
 
