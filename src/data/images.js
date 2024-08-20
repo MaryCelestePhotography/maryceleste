@@ -55,7 +55,8 @@ export const images = [
     location: 'Lofoten Islands',
     description: '', // Optional
     category: 'Landscape Portfolio',
-  },{
+  },
+  {
     src: '/images/landscape/Before the Storm.jpg',
     title: 'Before the Storm',
     date: '', // Optional
