@@ -294,7 +294,14 @@ export const images = [
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
-
+{
+    src: '/images/wildlife/Sunset in Africa.jpg',
+    title: 'Sunset in Africa',
+    date: '', // Optional
+    location: 'Africa',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
 
 
 
