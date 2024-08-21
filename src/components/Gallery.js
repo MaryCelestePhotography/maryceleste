@@ -82,7 +82,7 @@ const Gallery = () => {
       <ImageGrid>
         {filteredImages.map((img, index) => (
           <ImageItem key={index} onClick={() => openModal(index)}>
-            <img src={img.src} alt={img.title} />
+            <img src={img.src} alt={img.title} loading="lazy" />
             <IconOverlay className="icon">
               <FontAwesomeIcon icon={faSearchPlus} />
             </IconOverlay>
