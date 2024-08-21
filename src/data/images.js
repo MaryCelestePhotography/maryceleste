@@ -112,7 +112,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
-
+{
+    src: '/images/landscape/Sunset in Zion.jpg',
+    title: 'Sunset in Zion',
+    date: '', // Optional
+    location: 'Southwest USA',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
   
   // Abstract and Bible Verses
   {
