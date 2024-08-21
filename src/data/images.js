@@ -128,6 +128,14 @@ export const images = [
     description: '', // Optional
     category: 'Landscape Portfolio',
   },
+  {
+    src: '/images/landscape/The Sun Plays at Arches.jpg',
+    title: 'The Sun Plays at Arches',
+    date: '', // Optional
+    location: 'Southwest USA',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
   // Abstract and Bible Verses
   {
     src: '/images/abstract/aDSC_257 262focus merge.jpg',
