@@ -283,7 +283,7 @@ export const images = [
     src: '/images/wildlife/Puffins!.jpg',
     title: 'Puffins!',
     date: '', // Optional
-    location: 'Africa',
+    location: 'Lofoten Islands',
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
