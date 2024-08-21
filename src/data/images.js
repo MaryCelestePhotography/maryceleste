@@ -279,6 +279,14 @@ export const images = [
     description: '', // Optional
     category: 'Wildlife Portfolio',
   },
+{
+    src: '/images/wildlife/Puffins!.jpg',
+    title: 'Puffins!',
+    date: '', // Optional
+    location: 'Africa',
+    description: '', // Optional
+    category: 'Wildlife Portfolio',
+  },
 
 
 
