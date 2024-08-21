@@ -171,7 +171,14 @@ export const images = [
     description: '', // Optional
     category: 'Abstract and Bible Verses',
   },
-
+{
+    src: '/images/landscape/Sunrise Moeraki Boulders.jpg',
+    title: 'Sunrise Moeraki Boulders',
+    date: '', // Optional
+    location: 'New Zealand',
+    description: '', // Optional
+    category: 'Landscape Portfolio',
+  },
 
 
   // Wildlife Portfolio
