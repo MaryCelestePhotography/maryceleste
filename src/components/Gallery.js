@@ -12,7 +12,7 @@ const Gallery = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const imagesPerPage = 10;
+  const imagesPerPage = 6;
 
   const filteredImages = images.filter((img) => {
     if (selectedCategory === "Galleries by Location" && selectedLocation) {
