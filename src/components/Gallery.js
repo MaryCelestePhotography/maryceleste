@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Gallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState(
-    "Landscape Portfolio"
-  );
+  const [selectedCategory, setSelectedCategory] = useState("Landscape Portfolio");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const imagesPerPage = 10;
 
   const filteredImages = images.filter((img) => {
     if (selectedCategory === "Galleries by Location" && selectedLocation) {
@@ -48,6 +49,25 @@ const Gallery = () => {
     });
   };
 
+  // Pagination logic
+  const indexOfLastImage = currentPage * imagesPerPage;
+  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+  const currentImages = filteredImages.slice(indexOfFirstImage, indexOfLastImage);
+
+  const totalPages = Math.ceil(filteredImages.length / imagesPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <GalleryContainer>
       <CategoryMenu>
@@ -57,6 +77,7 @@ const Gallery = () => {
             onClick={() => {
               setSelectedCategory(category);
               setSelectedLocation("");
+              setCurrentPage(1);
             }}
             active={selectedCategory === category}
           >
@@ -70,7 +91,10 @@ const Gallery = () => {
           {locations.map((location) => (
             <LocationButton
               key={location}
-              onClick={() => setSelectedLocation(location)}
+              onClick={() => {
+                setSelectedLocation(location);
+                setCurrentPage(1); 
+              }}
               active={selectedLocation === location}
             >
               {location}
@@ -80,8 +104,8 @@ const Gallery = () => {
       )}
 
       <ImageGrid>
-        {filteredImages.map((img, index) => (
-          <ImageItem key={index} onClick={() => openModal(index)}>
+        {currentImages.map((img, index) => (
+          <ImageItem key={index} onClick={() => openModal(indexOfFirstImage + index)}>
             <img src={img.src} alt={img.title} loading="lazy" />
             <IconOverlay className="icon">
               <FontAwesomeIcon icon={faSearchPlus} />
@@ -90,6 +114,18 @@ const Gallery = () => {
           </ImageItem>
         ))}
       </ImageGrid>
+
+      <PaginationControls>
+        <PaginationButton onClick={prevPage} disabled={currentPage === 1}>
+          &#8249; Previous
+        </PaginationButton>
+        <PageIndicator>
+          Page {currentPage} of {totalPages}
+        </PageIndicator>
+        <PaginationButton onClick={nextPage} disabled={currentPage === totalPages}>
+          Next &#8250;
+        </PaginationButton>
+      </PaginationControls>
 
       {isModalOpen && selectedImageIndex !== null && (
         <Modal onClick={closeModal}>
@@ -102,16 +138,12 @@ const Gallery = () => {
             <PrevButton onClick={showPreviousImage}>&#8249;</PrevButton>
             <NextButton onClick={showNextImage}>&#8250;</NextButton>
             <ModalDetails>
-              <ModalTitle>
+            <ModalTitle>
                 {filteredImages[selectedImageIndex].title}
               </ModalTitle>
               <ModalText>{filteredImages[selectedImageIndex].date}</ModalText>
-              <ModalText>
-                {filteredImages[selectedImageIndex].location}
-              </ModalText>
-              <ModalText>
-                {filteredImages[selectedImageIndex].description}
-              </ModalText>
+              <ModalText>{filteredImages[selectedImageIndex].location}</ModalText>
+              <ModalText>{filteredImages[selectedImageIndex].description}</ModalText>
             </ModalDetails>
           </ModalContent>
         </Modal>
@@ -136,13 +168,10 @@ const ImageTitle = styled.div`
   z-index: 1;
 `;
 
+
 const GalleryContainer = styled.div`
   padding: 1.5rem;
   margin-top: 0;
-  @media (max-width: 768px) {
-    padding: 1rem;
-    margin-top: 0;
-  }
 `;
 
 const CategoryMenu = styled.div`
@@ -158,21 +187,10 @@ const CategoryButton = styled.button`
   border: none;
   padding: 0.5rem 1rem;
   margin: 0.5rem;
-  font-family: "Playfair Display", serif;
   cursor: pointer;
   border-radius: 5px;
   font-size: 0.9rem;
-  flex: 1;
-  max-width: 150px;
   transition: background 0.3s ease;
-
-  &:hover {
-    background: #f39c12;
-  }
-  @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
 `;
 
 const LocationMenu = styled.div`
@@ -187,22 +205,10 @@ const LocationButton = styled.button`
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  font-family: "Playfair Display", serif;
   margin: 0.5rem;
   cursor: pointer;
   border-radius: 5px;
   font-size: 0.9rem;
-  flex: 1;
-  max-width: 150px;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: #3498db;
-  }
-  @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
 `;
 
 const ImageGrid = styled.div`
@@ -210,9 +216,9 @@ const ImageGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.5rem;
   overflow-y: auto;
-  max-height: 80vh;
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 `;
 
@@ -226,10 +232,6 @@ const IconOverlay = styled.div`
   color: white;
   z-index: 2;
   text-shadow: 0 0 3px black;
-
-  @media (max-width: 768px) {
-    opacity: 1;
-  }
 `;
 
 const ImageItem = styled.div`
@@ -253,10 +255,38 @@ const ImageItem = styled.div`
   &:hover .icon {
     transform: scale(2.1);
   }
-
-  &:hover ${ImageTitle} {
+    &:hover ${ImageTitle} {
     opacity: 1;
   }
+`;
+
+const PaginationControls = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+`;
+
+const PaginationButton = styled.button`
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+
+  &:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+`;
+
+const PageIndicator = styled.span`
+  font-size: 1rem;
+  color: white;
 `;
 
 const Modal = styled.div`
@@ -271,7 +301,6 @@ const Modal = styled.div`
   align-items: center;
   z-index: 1000;
   padding: 1rem;
-  overflow-y: auto;
 `;
 
 const ModalContent = styled.div`
@@ -280,80 +309,63 @@ const ModalContent = styled.div`
   max-height: 90vh;
   overflow: hidden;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 `;
 
 const ModalImage = styled.img`
   max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  border-radius: 0px;
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.0);
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  z-index: 10;
-`;
-
-const PrevButton = styled.button`
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.0);
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 2rem;
-  border-radius: 5px;
-  z-index: 10;
-`;
-
-const NextButton = styled.button`
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.0);
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 2rem;
-  border-radius: 5px;
-  z-index: 10;
+  max-height: 75vh;
 `;
 
 const ModalDetails = styled.div`
-  margin-top: 1rem;
-  color: white;
-  text-align: left;
-  overflow-y: auto;
   max-height: 20vh;
-  padding: 0 1rem;
-  flex-shrink: 0;
+  overflow-y: auto;
+  margin-top: 1rem;
 `;
 
 const ModalTitle = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const ModalText = styled.p`
-  font-size: 1rem;
-  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: white;
+  margin: 0.5rem 0;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
+const PrevButton = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
+const NextButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
 `;
 
 export default Gallery;
